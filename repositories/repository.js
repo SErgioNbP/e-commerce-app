@@ -19,7 +19,7 @@ module.exports = class Repository {
         attrs.id = this.randomId();
 
         const records = await this.getAll();
-        records.push(attr);
+        records.push(attrs);
 
         await this.writeAll(records);
 
@@ -54,10 +54,10 @@ module.exports = class Repository {
     }
 
     async update(id, attrs) {
-        const records = await this.getAll();
-        const record = records.find(record => record.id === id);
+        //const records = await this.getAll();
+        //const record = records.find(record => record.id === id);
 
-        //const record = this.getOne(id);
+        const record = this.getOne(id);
 
         if(!record) {
             throw new Error(`Record with id {id} not found`);
