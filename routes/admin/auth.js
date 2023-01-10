@@ -27,10 +27,9 @@ router.post('/signup',
     async (req, res) => {
         const { email, password } = req.body;
         const user = await usersRepo.create({ email, password });
-
         req.session.userId = user.id; // Added by cookie session
 
-        res.send('Account created');
+        res.redirect('/admin/products');
     }
 );
 
@@ -54,7 +53,7 @@ router.post('/signin',
         const user = await usersRepo.getOneBy({ email });
         req.session.userId = user.id;
 
-        res.send('You signed in successfully!');
+        res.redirect('/admin/products');
     }
 );
 
